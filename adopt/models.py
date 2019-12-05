@@ -5,6 +5,9 @@ class Sighting(models.Model):
     latitude = models.FloatField(default=0.0)
     longitude = models.FloatField(default=0.0)
     unique_squirrel_id = models.CharField(max_length=100)
+    
+    AM = 'AM'
+    PM = 'PM'
     SHIFT_CHOICES = (
             (AM, 'AM'),
             (PM, 'PM'),
@@ -14,22 +17,60 @@ class Sighting(models.Model):
             choices=SHIFT_CHOICES,
             default='AM',
     )
-    date
-    age
-    primary_fur_color
-    location
-    specific_location
-    running
-    chasing
-    climbing
-    eating
-    foraging
-    other_activities
-    kuks
-    quaas
-    moans
-    tail_flags
-    tail_twitches
-    approaches
-    indifferent
-    runs_from
+    
+    date=models.DateField('date')
+    
+    ADULT = 'Adult'
+    JUVENILE = 'Juvenile'
+    AGE_CHOICES = (
+            (ADULT, 'Adult'),
+            (JUVENILE, 'Juvenile'),
+    )
+    age=models.CharField(
+            max_length=10,
+            choices=AGE_CHOICES,
+            default='',
+    )
+
+    GRAY = 'Gray'
+    BLACK = 'Black'
+    CINNAMON = 'Cinnamon'
+    FUR_CHOICES = (
+            (GRAY, 'Gray'),
+            (BLACK, 'Black'),
+            (CINNAMON, 'Cinnamon'),
+    )
+    primary_fur_color=models.CharField(
+            max_length=10,
+            choices=FUR_CHOICES,
+            default='',
+    )
+
+    GROUND_PLANE = 'Ground Plane'
+    ABOVE_GROUND = 'Above Ground'
+    LOC_CHOICES = (
+            (GROUND_PLANE, 'Ground Plane'),
+            (ABOVE_GROUND, 'Above Ground'),
+    )
+    location=models.CharField(
+            max_length=20,
+            choices=LOC_CHOICES,
+            default='',
+    )
+
+    specific_location=models.CharField(default='')
+
+    running=models.BooleanField()
+    chasing=models.BooleanField()
+    climbing=models.BooleanField()
+    eating=models.BooleanField()
+    foraging=models.BooleanField()
+    other_activities=models.charField(max_length=None)
+    kuks=models.BooleanField()
+    quaas=models.BooleanField()
+    moans=models.BooleanField()
+    tail_flags=models.BooleanField()
+    tail_twitches=models.BooleanField()
+    approaches=models.BooleanField()
+    indifferent=models.BooleanField()
+    runs_from=models.BooleanField()
