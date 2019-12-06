@@ -1,5 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def index(request):
-    return HttpResponse("This is the squirrel map!")
+from .models import Sighting
+
+def all_squirrels(request):
+    squirrels = Sighting.objects.all()
+    context = {
+            'squirrels':squirrels,
+    }
+    return render(request, 'adopt/sighting.html', context)

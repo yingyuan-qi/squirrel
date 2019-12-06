@@ -58,14 +58,14 @@ class Sighting(models.Model):
             default='',
     )
 
-    specific_location=models.CharField(default='')
+    specific_location=models.CharField(max_length=100,default='')
 
     running=models.BooleanField()
     chasing=models.BooleanField()
     climbing=models.BooleanField()
     eating=models.BooleanField()
     foraging=models.BooleanField()
-    other_activities=models.charField(max_length=None)
+    other_activities=models.CharField(max_length=100)
     kuks=models.BooleanField()
     quaas=models.BooleanField()
     moans=models.BooleanField()
@@ -74,3 +74,6 @@ class Sighting(models.Model):
     approaches=models.BooleanField()
     indifferent=models.BooleanField()
     runs_from=models.BooleanField()
+
+    def __str__(self):
+        return self.unique_squirrel_id
