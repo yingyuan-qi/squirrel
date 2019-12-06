@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext as _
 
-class Sighting(models.Model):
+class Sightings(models.Model):
     latitude = models.FloatField(default=0.0)
     longitude = models.FloatField(default=0.0)
     unique_squirrel_id = models.CharField(max_length=100)
